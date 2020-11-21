@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+*{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+body, html{
+  height: 100%;
+}
+body{
+  overflow-x: hidden;
+  color: white;
+  background-image: url("imgs/acscrest-dark.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#landing{
+  height: 100%;
+}
+#landing .row{
+  height: 80%;
+}
+.caption h1{
+  font-size: calc(2em + 3vw) !important;
+}
