@@ -1,27 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+::-webkit-scrollbar { 
+  display: none; 
+}
 *{
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
 }
 body, html{
   height: 100%;
 }
 body{
   overflow-x: hidden;
-  color: white;
-  background-image: url("imgs/acscrest-dark.jpg");
+  background-image: url("imgs/acscrest-dark-min.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
+#mainNav{
+  background-color: rgba(0, 0, 0,0);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 0rem;
+  padding-top: .2rem;
+}
+.navbar-toggler{
+  border: 0px;
+}
+.navbar-toggler span{
+  color: white;
+}
+.navbar-brand{
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: white;
+}
+.navbar-brand:hover{
+  padding: 3px;
+  background-color: aquamarine;
+  color: white;
+}
+.navbar-nav li{
+  padding: 3px;
+}
+.nav-link{
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: white;
+}
+.nav-link:hover, .nav-link.active{
+  background-color: aquamarine;
+  color: black;
+}
 #landing{
   height: 100%;
 }
-#landing .row{
-  height: 80%;
+#caption {
+  color: white;
+  margin-left: 20%;
+  margin-right: 20%;
+  position: absolute;
+  top: 30%;
 }
-.caption h1{
-  font-size: calc(2em + 3vw) !important;
+#caption> h1{
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+#caption> h5{
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+#caption > button{
+  border-radius: 0px;
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.captionElement{
+  display: none;
+}
+.modal{
+  color: black !important;
+}
+/* #caption > button > a{
+  color: white;
+}
+#caption > button > a:hover{
+  color: black;
+  text-decoration: none;
+} */
+#about{
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+#creators{
+  color: white;
+}
+#experience{
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  height: 100% !important;
+}
+
+.offset{
+  display: none;
+  padding: 1rem;
+  font-size: 1.3rem;
 }

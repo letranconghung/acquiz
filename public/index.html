@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hi ACS Quiz</title>
-
+    <title>ACS Quiz</title>
+    <link rel="icon" href="imgs/iconcrest.png">
     <!-- update the version number as needed -->
     <script src="/__/firebase/8.1.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
+    <!-- include only the Firebase features as you need --> 
     <script src="/__/firebase/8.1.1/firebase-auth.js"></script>
     <script defer src="/__/firebase/8.1.1/firebase-database.js"></script>
     <script src="/__/firebase/8.1.1/firebase-firestore.js"></script>
@@ -22,89 +22,119 @@
       to avoid connecting the SDK to running emulators.
     -->
     <script src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <!-- Firebase AuthUI -->
-    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
-    <!-- created css and js -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <!-- custom -->
     <link rel="stylesheet" href="styles.css">
-    <script src="index.js"></script>
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+      <a class="navbar-brand" href="#landing">ACS Quiz Game</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fas fa-bars fa-lg"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" id="navBarList">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#creators">Creators</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </head>
-  <body>
-    <div class="container-fluid" id="landing">
-      <div class="row align-items-center" id="landingRow">
-        <div class="col-lg-6 col-10 ml-auto mr-auto">
-          <div class="caption text-center">
-            <h1>ACS Game Quiz</h1>
+  <body data-spy="scroll" data-target="#navbarResponsive">
+    <div id="landing"></div>
+    <div class="text-center" id="caption">
+      <h1 class="captionElement">ACS QUIZ GAME</h1>
+      <h5 class="captionElement">As a result of the Open Innovation Platform initiative, a group of students from Anglo-Chinese School (Independent) has built an app that supports a novel approach to teaching and learning in school</h5>
+      <button type="button" class="captionElement btn btn-lg btn-outline-light" id="loginbtn" data-toggle="modal" data-target="#loginmodal">
+        Log in
+      </button>
+      <button type="button" class="captionElement btn btn-lg btn-outline-light" id="signupbtn" data-toggle="modal" data-target="#signupmodal">
+        Sign up
+      </button>
+      <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Log in</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="loginEmailField">Email address</label>
+                  <input type="email" class="form-control" id="loginEmailField" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="loginPasswordField">Password</label>
+                  <input type="password" class="form-control" id="loginPasswordField" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Log in</button>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="col-10 col-lg-4 ml-auto mr-auto">
-          <div id="firebaseui-auth-container"></div>
-          <div id="loader">Loading...</div>
+      </div>
+      <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="signupEmailField">Email address</label>
+                  <input type="email" class="form-control" id="signupEmailField" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="signupPasswordField">Password</label>
+                  <input type="password" class="form-control" id="signupPasswordField" placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <label for="signupNameField">Display Name</label>
+                  <input type="text" class="form-control" id="signupNameField" placeholder="Display Name">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script> -->
-    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+    <div id="about" class="offset">
+      <div class="col-8 ml-auto mr-auto text-center">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus non iste nostrum, deleniti reprehenderit iure? Laudantium officiis obcaecati at, est quisquam id delectus, rerum adipisci reiciendis veritatis, molestias accusamus corrupti. Eligendi quasi quis expedita suscipit distinctio ad perferendis qui reprehenderit, nostrum non, numquam et magnam tenetur incidunt tempora, nam sed!</p>
+      </div>
+    </div>
+    <div id="creators" class="offset">
+      <div class="col-8 ml-auto mr-auto text-center">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aperiam harum vero distinctio assumenda quam perspiciatis placeat repellendus labore sapiente quibusdam similique nam, dolores eveniet, illo saepe laboriosam quas inventore porro vel officia? Debitis blanditiis saepe nemo numquam veniam molestiae in, eos esse consequuntur quibusdam harum assumenda quidem, adipisci illum?</p>
+      </div>
+    </div>
+    <div id="experience" class="offset">
+      <div class="col-8 ml-auto mr-auto text-center">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum dolores commodi illum, voluptates error incidunt sequi. Earum fugit ipsam quisquam tempora ab cum obcaecati, adipisci, in, quo expedita modi quae! Modi doloribus esse repellat aliquid laboriosam. Similique, debitis esse odit earum, incidunt, sunt blanditiis id exercitationem minima veritatis totam dolor?</p>
+      </div>
+    </div>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <!-- Custom -->
+    <script src="js/index.js"></script>
+    <script src="js/auth.js"></script>
   </body>
 </html>
