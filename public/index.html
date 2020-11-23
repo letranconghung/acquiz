@@ -38,28 +38,28 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" id="navBarList">
           <li class="nav-item">
-            <a class="nav-link logged-out" href="#about">About</a>
+            <a class="nav-link logged-out d-none" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logged-out" href="#creators">Creators</a>
+            <a class="nav-link logged-out d-none" href="#creators">Creators</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logged-out" href="#howto">How To</a>
+            <a class="nav-link logged-out d-none" href="#howto">How To</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#loginModal">Log in</a>
+            <a class="nav-link logged-out d-none" href="#" data-toggle="modal" data-target="#loginModal">Log in</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logged-out" href="#" data-toggle="modal" data-target="#signupModal">Sign up</a>
+            <a class="nav-link logged-out d-none" href="#" data-toggle="modal" data-target="#signupModal">Sign up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logged-in" href="#">My Account</a>
+            <a class="nav-link logged-in d-none" href="#" data-toggle="modal" data-target="#myAccountModal" id="navAccountLink">My Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logged-in" href="#">My Datasets</a>
+            <a class="nav-link logged-in d-none" href="#myquizsets">My Quizsets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logged-in" href="#" id="logout">Log out</a>
+            <a class="nav-link logged-in d-none" href="#" id="logout">Log out</a>
           </li>
           
         </ul>
@@ -68,11 +68,13 @@
   </head>
   <body data-spy="scroll" data-target="#navbarResponsive">
     <!-- Landing Filler -->
-    <div id="landing"></div>
+    <div id="landing" class="logged-out d-none"></div>
 
+    <div id="welcomeLanding" class="text-center pt-5 logged-in d-none">
+
+    </div>
     <!-- Caption -->
-    <div class="text-center" id="caption">
-
+    <div class="text-center logged-out d-none" id="caption">
       <!-- Caption Text -->
       <h1 class="captionElement">ACS QUIZ GAME</h1>
       <h5 class="captionElement">As a result of the Open Innovation Platform initiative, a group of students from Anglo-Chinese School (Independent) has built an app that supports a novel approach to teaching and learning in school</h5>
@@ -141,31 +143,96 @@
         </div>
       </div>
     </div>
+
+    <!-- My Account Modal -->
+    <div class="modal fade" id="myAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Account details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="myAccountField">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create Quizset Modal -->
+    <div class="modal fade" id="quizsetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Create a quizset</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="quizsetField">
+            <form id = "quizsetForm">
+              <div class="form-group">
+                <label for="quizsetNameField">Name of the quizset</label>
+                <input type="text" class="form-control" id="quizsetNameField" placeholder="Name of the quizset" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- About -->
-    <div id="about" class="offset">
+    <div id="about" class="logged-out offset">
       <div class="col-8 ml-auto mr-auto text-center">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus non iste nostrum, deleniti reprehenderit iure? Laudantium officiis obcaecati at, est quisquam id delectus, rerum adipisci reiciendis veritatis, molestias accusamus corrupti. Eligendi quasi quis expedita suscipit distinctio ad perferendis qui reprehenderit, nostrum non, numquam et magnam tenetur incidunt tempora, nam sed!</p>
       </div>
     </div>
 
     <!-- Creators -->
-    <div id="creators" class="offset">
+    <div id="creators" class="logged-out offset">
       <div class="col-8 ml-auto mr-auto text-center">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem aperiam harum vero distinctio assumenda quam perspiciatis placeat repellendus labore sapiente quibusdam similique nam, dolores eveniet, illo saepe laboriosam quas inventore porro vel officia? Debitis blanditiis saepe nemo numquam veniam molestiae in, eos esse consequuntur quibusdam harum assumenda quidem, adipisci illum?</p>
       </div>
     </div>
 
     <!-- Experience -->
-    <div id="howto" class="offset">
+    <div id="howto" class="logged-out offset">
       <div class="col-8 ml-auto mr-auto text-center">
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum dolores commodi illum, voluptates error incidunt sequi. Earum fugit ipsam quisquam tempora ab cum obcaecati, adipisci, in, quo expedita modi quae! Modi doloribus esse repellat aliquid laboriosam. Similique, debitis esse odit earum, incidunt, sunt blanditiis id exercitationem minima veritatis totam dolor?</p>
       </div>
     </div>
 
-    <div id="mydatasets" class = "offset">
-      <ul id="quizsetList">
-
-      </ul>
+    <!-- My Quizsets -->
+    <div id="myquizsets" class="logged-in">
+      <div class="row">
+        <div class="col-4">
+          <!-- New quizset -->
+          <div class="row justify-content-center" id="newquizsetBtn">
+            <button class="btn btn-primary font2 mb-4" data-toggle="modal" data-target="#quizsetModal">
+              Create a new quizset
+            </button>
+          </div>
+        </div>
+        <div class="col-8">
+          <!-- New question -->
+          <div class="row justify-content-center" id="newquestionBtn">
+            <button class="btn btn-primary font2 mb-4 ">
+              Create a new question
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Quizset Metadata -->
+        <div class="col-4" id="quizsetListContainer">
+          <!-- populated by JS Codes -->
+        </div>
+        <!-- Quizset Data -->
+        <div class="col-8" id="questionListContainer">
+          <!-- populated by JS Codes -->
+        </div> 
+      </div>
     </div>
     <!-- .js includes -->
     <!-- Bootstrap -->

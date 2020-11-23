@@ -1,25 +1,11 @@
 var auth = firebase.auth();
 var db = firebase.firestore();
 
-// get data
-db.collection('quizsets').get().then(snapshot =>{
-  snapshot.docs.forEach(quizset => {
-    console.log('generating quizset...');
-    generateQuizsetUI(quizset);
-  })
-});
+// working code
 
 // listen for auth status changes
 auth.onAuthStateChanged( user => {
-  if(user){
-    console.log("user logged in: ", user);
-    $(".logged-in").css("display", "inherit");
-    $(".logged-out").css("display", "none");
-  } else{
-    $(".logged-out").css("display", "inherit");
-    $(".logged-in").css("display", "none");
-    console.log("user not logged in");
-  }
+  setupUI(user);
 });
 
 // sign up
@@ -67,4 +53,15 @@ $("#loginForm").submit(function (e) {
     alert("Error encountered: " + err.message);
     $("#signupForm").trigger("reset");
   });
+});
+
+$("#quizsetForm").submit(function (e) { 
+  e.preventDefault();
+  
+  db.collection('quizsets').add({
+    quizsetName: $("#quizsetNameField").val(),
+    ownerUniqueID: auth.currentUser.uid
+  });
+  $("#quizsetModal").modal('hide');
+  $("#quizsetForm").trigger("reset");
 });

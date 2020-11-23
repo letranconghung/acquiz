@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 ::-webkit-scrollbar { 
   display: none; 
 }
@@ -48,15 +49,25 @@ body{
   font-size: 1.1rem;
   text-transform: uppercase;
   color: white;
+  display: relative !important;
 }
-.nav-link:hover, .nav-link.active{
+
+/* used to have nav-link:hover with .active */
+.nav-link:hover, .nav-link.active{ 
   background-color: aquamarine;
   color: black;
 }
 #landing{
-  z-index: 2;
   background-color: rgba(0, 0, 0, 0.9);
   height: 100%;
+}
+#welcomeLanding{
+  color: white;
+  height: 30%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+#welcomeLanding>h1{
+  font-size: 5rem;
 }
 #caption {
   color: white;
@@ -97,7 +108,7 @@ body{
   color: black;
 }
 #creators{
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
 }
 #howto{
@@ -105,14 +116,27 @@ body{
   color: black;
   height: 100% !important;
 }
-#mydatasets{
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
+#myquizsets{
+  height: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: black;
+}
+.font2{
+  font-family: 'Roboto', sans-serif !important;
+}
+.fontsize2{
+  font-size: 1rem !important;
 }
 .offset{
+  display: none;
   padding: 1rem;
   font-size: 1.3rem;
 }
 .quiz{
   color: red;
+}
+.correctAnswer{
+  background-color: green;
+  color: white;
 }
