@@ -41,19 +41,38 @@ window.onscroll = function(){
 }
 
 // quizsets display
-var quizsetList = $("quizsetList");
+function generateQuizsetUI(quizset){
+  quizsetMetaData = quizset.data();
+  quizsetName = quizsetMetaData.quizsetName;
+  ownerUserID = quizsetMetaData.ownerUserID;
+  var htmlRes = `<li class = "quizset"> Quizset: ${quizsetName} by ${ownerUserID}
+  <ol>`;
 
-function generateListUI(data){
-  let res = "";
-  data.forEach(doc => {
-    var quizset = doc.data();
-    var li = `
-      <li>
-        ${quizset.quizsetName}
-      </li>
-    `;
-    res += li;
+
+  db.collection(quizset.ref.path + "/quizzes").get().then(quizzes => {
+    quizzes.docs.forEach(doc => {
+      var quiz = doc.data();
+      var res = `
+      <li  class = "quiz">${quiz.question} (Correct Answer: ${quiz.answers[quiz.correctIndex]})
+        <ul>`;
+      res += `
+          <li> ${quiz.answers[0]} </li>
+          <li> ${quiz.answers[1]} </li>
+          <li> ${quiz.answers[2]} </li>
+          <li> ${quiz.answers[3]} </li>`;
+      res += `
+        </ul>
+      </li>`;
+      htmlRes+= res;
+    });
+    htmlRes += `
+    </ol>
+    </li>`;
+    console.log(htmlRes);
+    $("#quizsetList").append(htmlRes);
   });
-  $("#quizsetList").append(res);
+
+  
+  
 }
 

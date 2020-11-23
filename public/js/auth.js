@@ -3,7 +3,10 @@ var db = firebase.firestore();
 
 // get data
 db.collection('quizsets').get().then(snapshot =>{
-  generateListUI(snapshot.docs);
+  snapshot.docs.forEach(quizset => {
+    console.log('generating quizset...');
+    generateQuizsetUI(quizset);
+  })
 });
 
 // listen for auth status changes
