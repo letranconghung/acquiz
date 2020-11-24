@@ -62,12 +62,13 @@ body{
   height: 100%;
 }
 #welcomeLanding{
+  align-items: center;
   color: white;
-  height: 30%;
+  height: 20%;
   background-color: rgba(0, 0, 0, 0.9);
 }
 #welcomeLanding>h1{
-  font-size: 5rem;
+  font-size: 3rem;
 }
 #caption {
   color: white;
@@ -96,7 +97,11 @@ body{
 .modal{
   color: black !important;
 }
+.modal-content, .card{
+  border-radius: 0;
+}
 .btn-custom{
+  border-radius: 0;
   color: white;
   background-color: burlywood;
   transition: background-color .5s;
