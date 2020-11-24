@@ -8,7 +8,6 @@ $(document).ready(function () {
 
 // set up logged-in/logged-out UI
 function setupUI(user){
-  $(".logged-in, .logged-out").removeClass("d-none");
   if(user){
     var myAccount = `
       <p> <b> Account Email:</b> ${user.email}</p>
@@ -16,17 +15,18 @@ function setupUI(user){
       <p> <b> Unique UserID:</b> ${user.uid} </p>
     `;
     $("#myAccountField").html(myAccount);
-    // $('#navAccountLink').text(`Hi, ${user.displayName}`);
-    $("#welcomeLanding").html(`<h1>Hi, ${user.displayName}</h1>`);
-    $(".logged-in").css("display", "inherit");
-    $(".logged-out").css("display", "none");
+    // $("#welcomeLanding").html(`<h1>Hi, ${localDisplayName}</h1>`);
     // get data
     db.collection('quizsets').onSnapshot(snapshot =>{
       generateQuizsetUILeft(snapshot.docs);
     }, err => {});
+    $(".logged-in, .logged-out").removeClass("d-none");
+    $(".logged-in").css("display", "inherit");
+    $(".logged-out").css("display", "none");
   } else{
     $("#myAccountDetails").html('');
     $("#welcomeMessage").html('');
+    $(".logged-in, .logged-out").removeClass("d-none");
     $(".logged-out").css("display", "inherit");
     $(".logged-in").css("display", "none");
   }
@@ -143,14 +143,10 @@ function generateQuizsetUIRight(docID){
 // quizsetList expander
 $('#quizsetListContainer').on('click','.quizsetChoice', function(e) {
   targ = e.target;
-  if($(targ).attr('data-questionsDisplay') == 'hide'){
+  if((quizsetSelected == '') || ($(targ).attr('data-docID') != quizsetSelected)){
     // hide everything except for clicked element
-    $(targ).parent().children().attr('data-questionsDisplay', 'hide');
-    $(targ).attr('data-questionsDisplay', 'show');
     quizsetSelected = $(targ).attr('data-docID');
   }else{
-    // hide everything
-    $(targ).parent().children().attr('data-questionsDisplay', 'hide');
     quizsetSelected = '';
   }
   updateQuizsetUILeft();
@@ -178,19 +174,12 @@ $('#createQuestionModal').on('show.bs.modal', function (e) {
 });
 
 function updateQuizsetUILeft(){
-  // all those with data-questionsDisplay = 'hide' set to white
-  // those with data-questionsDisplya = 'show' set to aquamarine
-  // use quizsetSelected as a flag
   $("#quizsetListContainer .quizsetChoice").each(function(){
-    if($(this).attr('data-questionsDisplay') == 'hide'){
-      $(this).css('background-color', 'white');
-    }else{
+    if($(this).attr('data-docID') == quizsetSelected){
       $(this).css('background-color', 'burlywood');
+    }else{
+      $(this).css('background-color', 'white');
     }
   });
-  if(quizsetSelected != ''){
-    generateQuizsetUIRight(quizsetSelected);
-  }else{
-    generateQuizsetUIRight('');
-  }
+  generateQuizsetUIRight(quizsetSelected);
 }

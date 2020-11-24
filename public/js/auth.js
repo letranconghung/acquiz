@@ -55,7 +55,6 @@ $("#loginForm").submit(function (e) {
 
 $("#quizsetForm").submit(function (e) { 
   e.preventDefault();
-  
   db.collection('quizsets').add({
     quizsetName: $("#quizsetNameField").val(),
     ownerUID: auth.currentUser.uid,
@@ -63,6 +62,7 @@ $("#quizsetForm").submit(function (e) {
   }).then(doc => {
     console.log(doc.id);
     quizsetSelected = doc.id;
+    updateQuizsetUILeft();
   });
   $("#quizsetModal").modal('hide');
   $("#quizsetForm").trigger("reset");
