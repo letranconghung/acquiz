@@ -1,6 +1,5 @@
 var auth = firebase.auth();
 var db = firebase.firestore();
-
 // working code
 
 // listen for auth status changes
@@ -60,8 +59,31 @@ $("#quizsetForm").submit(function (e) {
   
   db.collection('quizsets').add({
     quizsetName: $("#quizsetNameField").val(),
-    ownerUniqueID: auth.currentUser.uid
+    ownerUID: auth.currentUser.uid,
+    ownerName: auth.currentUser.displayName
+  }).then(doc => {
+    console.log(doc.id);
+    quizsetSelected = doc.id;
   });
   $("#quizsetModal").modal('hide');
   $("#quizsetForm").trigger("reset");
+});
+
+$("#questionForm").submit(function (e) { 
+  e.preventDefault();
+  var quizsetID = $("#createQuestionQuizsetField").val();
+  var questionName = $("#createQuestionNameField").val();
+  var answerArr = [
+    $("#createQuestionOptionFieldA").val(),
+    $("#createQuestionOptionFieldB").val(),
+    $("#createQuestionOptionFieldC").val(),
+    $("#createQuestionOptionFieldD").val(),
+  ];
+  var corrIndex = $('input[name="inlineRadioOptions"]:checked').val();
+  db.collection('quizsets').doc(quizsetID).collection('quizzes').add({
+    question: questionName,
+    correctIndex: corrIndex,
+    answers: answerArr
+  });
+  $("#questionForm").trigger('reset');
 });

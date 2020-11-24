@@ -31,7 +31,7 @@
     
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-      <a class="navbar-brand" href="#landing">ACS Quiz Game</a>
+      <a class="navbar-brand" href="#index.html">ACS Quiz Game</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fas fa-bars fa-lg"></span>
       </button>
@@ -182,6 +182,72 @@
         </div>
       </div>
     </div>
+
+    <!-- Create question Modal -->
+    <div class="modal fade" id="createQuestionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Create a question</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="createQuestionField">
+            <form id = "questionForm">
+              <div class="form-group">
+                <label for="createQuestionQuizsetField">Add to quizset:</label>
+                <select class="form-control" name="createQuestionQuizsetField" id="createQuestionQuizsetField" required>
+                  <option value="" id="defaultOption">Select a quizset below</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="createQuestionNameField">Question Title</label>
+                <input type="text" class="form-control" id="createQuestionNameField" placeholder="Question Title" required>
+              </div>
+              <div class="form-group">
+                <label for="createQuestionOptionFieldA">Option A</label>
+                <input type="text" class="form-control" id="createQuestionOptionFieldA" placeholder="Option A" required>
+              </div>
+              <div class="form-group">
+                <label for="createQuestionOptionFieldB">Option B</label>
+                <input type="text" class="form-control" id="createQuestionOptionFieldB" placeholder="Option B" required>
+              </div>
+              <div class="form-group">
+                <label for="createQuestionOptionFieldC">Option C</label>
+                <input type="text" class="form-control" id="createQuestionOptionFieldC" placeholder="Option C" required>
+              </div>
+              <div class="form-group">
+                <label for="createQuestionOptionFieldD">Option D</label>
+                <input type="text" class="form-control" id="createQuestionOptionFieldD" placeholder="Option D" required>
+              </div>
+              <label>Correct Option</label>
+              <div class="form-group">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioA" value=0 required>
+                  <label class="form-check-label" for="inlineRadioA">A</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioB" value=1 required>
+                  <label class="form-check-label" for="inlineRadioB">B</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioC" value=2 required>
+                  <label class="form-check-label" for="inlineRadioC">C</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioD" value=3 required>
+                  <label class="form-check-label" for="inlineRadioD">D</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- About -->
     <div id="about" class="logged-out offset">
       <div class="col-8 ml-auto mr-auto text-center">
@@ -217,8 +283,8 @@
         <div class="col-8">
           <!-- New question -->
           <div class="row justify-content-center" id="newquestionBtn">
-            <button class="btn btn-primary font2 mb-4 ">
-              Create a new question
+            <button class="btn btn-primary font2 mb-4" data-toggle="modal" data-target="#createQuestionModal">
+              Add a question to an existing quizset
             </button>
           </div>
         </div>

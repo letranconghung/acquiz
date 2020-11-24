@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 ::-webkit-scrollbar { 
   display: none; 
 }
 *{
-  font-family: 'Quicksand', sans-serif;
+  scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
 body, html{
@@ -104,23 +105,22 @@ body{
 
 
 #about{
-  background-color: rgba(255, 255, 255, 0.9);
-  color: black;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 #creators{
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
 }
 #howto{
-  background-color: rgba(255, 255, 255, 0.9);
-  color: black;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
   height: 100% !important;
 }
 #myquizsets{
   height: 100%;
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.9);
-  color: black;
 }
 .font2{
   font-family: 'Roboto', sans-serif !important;
