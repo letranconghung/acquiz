@@ -35,26 +35,10 @@ function setupUI(user){
 // navbar colors
 window.onscroll = function(){
   if(window.innerWidth >=992){
-    if(window.scrollY >= ($('#mainNav').height()*5)){
-      $('#mainNav').css('backgroundColor', 'rgba(255, 255, 255,0.9)');
-      $('#mainNav .navbar-brand,#mainNav div .navbar-nav .nav-item .nav-link').css('color', 'rgba(37, 192, 140, 0.884)');
-      $('.fa-bars').css('color', 'rgba(37, 192, 140, 0.884)');
-      $('#mainNav .navbar-brand,#mainNav div .navbar-nav .nav-item .nav-link').mouseenter((event)=>{
-        event.target.style.color = 'rgb(0,0,0)';
-      });
-      $('#mainNav .navbar-brand,#mainNav div .navbar-nav .nav-item .nav-link').mouseleave((event)=>{
-        event.target.style.color = 'rgba(37, 192, 140, 0.884)';
-      });
+    if(window.scrollY >= ($('#mainNav').outerHeight())){
+      $('#mainNav').css('backgroundColor', 'rgb(29, 28, 26)');
     }else{
       $('#mainNav').css('backgroundColor', 'transparent');
-      $('#mainNav .navbar-brand,#mainNav div .navbar-nav .nav-item .nav-link').css('color', 'rgba(255, 255, 255,0.9)');
-      $('.fa-bars').css('color', 'white');
-      $('#mainNav .navbar-brand,#mainNav div .navbar-nav .nav-item .nav-link').mouseenter((event)=>{
-        event.target.style.color = 'rgb(0,0,0)';
-      });
-      $('#mainNav .navbar-brand,#mainNav div .navbar-nav .nav-item .nav-link').mouseleave((event)=>{
-        event.target.style.color = 'rgba(255, 255, 255,0.9)';
-      });
     }
   }
 }
@@ -201,7 +185,7 @@ function updateQuizsetUILeft(){
     if($(this).attr('data-questionsDisplay') == 'hide'){
       $(this).css('background-color', 'white');
     }else{
-      $(this).css('background-color', 'aquamarine');
+      $(this).css('background-color', 'burlywood');
     }
   });
   if(quizsetSelected != ''){

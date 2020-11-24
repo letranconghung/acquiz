@@ -21,7 +21,7 @@ $("#signupForm").submit(function (e) {
     });
     $("#signupModal").modal('hide');
     $("#signupForm").trigger("reset");
-    alert("signed up succesfully");
+    // alert("signed up succesfully");
   }).catch((err) => {
     alert("Error encountered: " + err.message);
     $("#signupForm").trigger("reset");
@@ -33,7 +33,7 @@ $("#logout").click(function (e) {
   e.preventDefault();
   // sign out user
   auth.signOut().then((result) => {
-    alert("signed out successfully");
+    // alert("signed out successfully");
   });
 });
 
@@ -47,7 +47,6 @@ $("#loginForm").submit(function (e) {
   auth.signInWithEmailAndPassword(loginEmail, loginPassword).then((userCred) => {
     $("#loginModal").modal('hide');
     $("#loginForm").trigger("reset");
-    alert("logged in succesfully");
   }).catch((err) => {
     alert("Error encountered: " + err.message);
     $("#signupForm").trigger("reset");
